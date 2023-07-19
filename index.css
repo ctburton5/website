@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    background-image: url(wood.jpg);
+    background-position: 20%;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    height: fit-content;
+    padding-bottom: 100px;
+    padding-top: 50px;
+}
+
+.content {
+    align-content: center;
+    background-image: url(paper.jpg);
+    background-position: 10%;
+    width: 700px;
+    height: auto;
+    color: black;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.content .heading {
+    font-family: 'Times New Roman';
+    padding-top: 40px;
+    text-align: center;
+    font-size: 100px;
+    letter-spacing: 2px;
+}
+
+.content h2 {
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    text-decoration: underline;
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    height: 30px;
+    width: 400px;
+    border-style: ridge;
+    border-color: black;
+    border-width: 5px;
+}
+
+.center-submit {
+    display: block;
+    margin-right: auto;
+    margin-left: 70.59%;
+    height: 30px;
+    width: 60px;
+    border-style: solid;
+    border-radius: 10%;
+    border-color: black;
+    border-width: 2px;
+}
+
+.listItems {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+    line-height: 1px;
+    padding-top: 22px;
+    width: 50%;
+    height: 10px;
+    margin-bottom: 20px;
+    
+}
+
+.redText {
+    text-align: center;
+    font-size: 30px;
+    color: red;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+
+.added {
+    text-align: center;
+    font-size: 30px;
+    color: green;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+
+input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+}
