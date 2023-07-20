@@ -23,6 +23,7 @@
     color: black;
     border-style: solid;
     border-width: 5px;
+    padding-bottom: 200px;
 }
 
 .content .heading {
@@ -69,19 +70,19 @@
 }
 
 .listItems {
+    
     display: block;
     margin-right: auto;
     margin-left: auto;
-    text-align: center;
+    text-align: left;
     font-size: 30px;
     font-weight: bold;
     padding: 20px;
-    line-height: 1px;
+    line-height: 35px;
     padding-top: 22px;
-    width: 50%;
+    margin-left: 60px;
     height: 10px;
     margin-bottom: 20px;
-    
 }
 
 .redText {
@@ -89,7 +90,7 @@
     font-size: 30px;
     color: red;
     font-weight: bold;
-    padding-bottom: 30px;
+    padding-bottom: 3px;
 }
 
 .added {
@@ -103,4 +104,15 @@
 input[type=checkbox] {
     width: 20px;
     height: 20px;
+}
+
+.delete_button {
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px;
+    margin: 4px 2px;
+    cursor: pointer;
 }

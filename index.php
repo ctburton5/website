@@ -60,11 +60,12 @@ include("database.php");
                         $taskName = $row['task'];
                         $completed = $row['completed'];
 
-                        echo "<div class=\"listItems\">";
-                        echo "<br><br>";
-                        echo "<input type='checkbox' onchange='updateTaskStatus(this)' name='taskCheckbox' value='$taskID' " . ($completed ? "checked" : "") . ">";
+                        echo "<div class=\"listItems\" data-task-id=\"$taskID\">";
+                        echo "<button class='delete_button' onclick='deleteTask($taskID)''> DELETE </button>&nbsp&nbsp&nbsp";
+                        echo "<input type='checkbox' onchange='updateTaskStatus(this)' name='taskCheckbox' value='$taskID' " . ($completed ? "checked" : "") . ">&nbsp&nbsp&nbsp";
                         echo "<span>" . "   $taskName" . "</span>";
                         
+
                         echo "</div>";
                     }
                     mysqli_close($conn);
@@ -96,5 +97,45 @@ include("database.php");
         
         // Send the request
         xhr.send(data);
+    }
+</script>
+
+
+
+<script type="text/JavaScript">
+
+    function deleteTask(taskID) {
+        console.log("Task ID: ", taskID);
+        if (confirm("Are you sure you want to delete this task?")) {
+            
+            // Create an AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'delete_task.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            // Define the data to send
+            var data = 'taskID=' + encodeURIComponent(taskID);
+
+            // Set up the callback function to handle the server's response
+            xhr.onload = function() {
+                console.log("Response from server: ", xhr.responseText);
+
+                
+                if (xhr.status === 200) {
+                    // Successful response from the server, update the UI
+                    
+                    var deletedTask = document.querySelector('[data-task-id="' + taskID + '"]');
+                    if (deletedTask) {
+                        deletedTask.remove();
+                    }
+                } else {
+                    console.log("error");
+                    // Handle errors if needed
+                }
+            };
+
+            // Send the request
+            xhr.send(data);
+        }
     }
 </script>
