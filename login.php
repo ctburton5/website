@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    include("database.php");
+session_start();
+include("database.php");
 ?>
 
 <!DOCTYPE html>
@@ -9,18 +9,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+
     <title>Login</title>
 </head>
 
 <body>
-    <h1>Please Login</h1>
-    <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
-        <label>Username: </label>
-        <input type="text" name="username"><br>
-        <label>Password: </label>
-        <input type="password" name="password"><br>
-        <input type="submit" name="submit" value="Login"><br>
-        <?php
+    <div class="main">
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+            <h1>Please Login</h1>
+            <label>Username: </label>
+            <input type="text" name="username"><br>
+            <label>Password: </label>
+            <input type="password" name="password"><br>
+            <input type="submit" name="submit" value="Login"><br>
+            <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -50,9 +53,9 @@
                             $_SESSION["id"] = $userID;
                             echo "id for the user is $userID";
                             echo "<br>user is $username";
-                           
-                            
-                            header("Location: index.php");
+
+
+                            header("Location: list.php");
                             exit();
                         } else {
                             // Incorrect password
@@ -65,10 +68,10 @@
                 }
             }
             mysqli_close($conn);
-        ?>
+            ?>
 
-    </form>
-
+        </form>
+    </div>
 </body>
 
 </html>

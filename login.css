@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+.main {
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    border-style: hidden double hidden double;
+    border-width: 10px;
+    border-color: black;
+    margin-top: 10%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+.main h1 {
+    padding-bottom: 20px;
+    font-size: 30px;
+    font-style: oblique;
+    text-decoration: underline double 2px;
+}
+
+.main label {
+    font-size: 30px;
+}
+
+input[type=text] {
+    width: 200px;
+    height: 25px;
+}
+
+input[type=password] {
+    margin-left: 6px;
+    height: 25px;
+    width: 200px;
+}
+
+input[type=submit] {
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 80%;
+    font-size: 15px;
+    font-weight: bold;
+}
