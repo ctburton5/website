@@ -6,7 +6,7 @@
         $conn = mysqli_connect("localhost", "root", "", "tododb");
 
         // Perform the database delete operation
-        $query = "DELETE FROM list WHERE ID = '$taskID'";
+        $query = "DELETE FROM tasks WHERE ID = '$taskID'";
         $result = mysqli_query($conn, $query);
 
         // Close the database connection

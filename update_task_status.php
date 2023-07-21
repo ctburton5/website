@@ -6,7 +6,7 @@
     // Perform the database update
     $conn = mysqli_connect("localhost", "root", "", "tododb");
 
-    $query = "UPDATE list SET completed = '$completed' WHERE ID = '$taskID'";
+    $query = "UPDATE tasks SET completed = '$completed' WHERE ID = '$taskID'";
     $result = mysqli_query($conn, $query);
 
     // Close the database connection

@@ -1,6 +1,9 @@
 <?php
-include("database.php");
-
+    session_start();
+    include("database.php");
+    $userID = $_SESSION['id'];
+    $username = $_SESSION['user'];
+    
 ?>
 
 <!DOCTYPE html>
@@ -21,16 +24,16 @@ include("database.php");
 
             <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
                 <p class="heading">
-                    To-Do List
+                    <?php echo "$username's<br>"; ?>To-Do List
                 </p>
                 <h2>Add a task to the list:</h2>
                 <input class="center-block" type="text" name="task"><br>
                 <input class="center-submit" type="submit" name="submit" value="Add"><br>
                 <?php
+                
+                
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    //$_POST = array();
-                    //unset($_SESSION['post_occurred']);
 
                     $task = filter_input(INPUT_POST, "task", FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -41,7 +44,8 @@ include("database.php");
                     } else {
 
                         try {
-                            $sql = "INSERT INTO List (task) VALUES ('$task')";
+                            //$userID = $_SESSION["id"];
+                            $sql = "INSERT INTO tasks (task, userid) VALUES ('$task', '$userID')";
                             mysqli_query($conn, $sql);
                             echo "<div class=\"added\">";
                             echo "Task Added!";
@@ -52,7 +56,10 @@ include("database.php");
                             echo "</div>";
                         }
                     }
-                    $query = "SELECT * FROM List";
+                    
+                    
+                }
+                    $query = "SELECT * FROM tasks WHERE userid = $userID";
                     $result = mysqli_query($conn, $query);
 
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -64,12 +71,11 @@ include("database.php");
                         echo "<button class='delete_button' onclick='deleteTask($taskID)''> DELETE </button>&nbsp&nbsp&nbsp";
                         echo "<input type='checkbox' onchange='updateTaskStatus(this)' name='taskCheckbox' value='$taskID' " . ($completed ? "checked" : "") . ">&nbsp&nbsp&nbsp";
                         echo "<span>" . "   $taskName" . "</span>";
-                        
+
 
                         echo "</div>";
                     }
                     mysqli_close($conn);
-                }
                 ?>
             </form>
 
